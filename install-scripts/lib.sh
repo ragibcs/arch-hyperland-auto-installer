@@ -34,13 +34,13 @@ readonly NOTE="${COLORS[cyan]}[NOTE]${COLORS[reset]}"
 readonly ACT="${COLORS[magenta]}[ACTION]${COLORS[reset]}"
 
 #=============================================================================
-# GLOBALS
+# GLOBALS (only declare if not already set by parent script)
 #=============================================================================
-declare -g LOG_DIR="${LOG_DIR:-Install-Logs}"
-declare -g LOG_FILE=""
-declare -g ISAUR=""
-declare -g PARALLEL_JOBS="${PARALLEL_JOBS:-4}"
-declare -g SCRIPT_DIR=""
+[[ -z "${LOG_DIR:-}" ]] && declare -g LOG_DIR="Install-Logs"
+[[ -z "${LOG_FILE:-}" ]] && declare -g LOG_FILE=""
+[[ -z "${ISAUR:-}" ]] && declare -g ISAUR=""
+[[ -z "${PARALLEL_JOBS:-}" ]] && declare -g PARALLEL_JOBS="4"
+[[ -z "${SCRIPT_DIR:-}" ]] && declare -g SCRIPT_DIR=""
 declare -g INSTALL_QUEUE=()
 declare -g FAILED_PACKAGES=()
 declare -g SUCCESSFUL_PACKAGES=()
