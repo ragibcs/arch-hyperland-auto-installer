@@ -49,7 +49,10 @@ declare -g SUCCESSFUL_PACKAGES=()
 # INITIALIZATION
 #=============================================================================
 init_installer() {
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    # Only set SCRIPT_DIR if not already set (may be readonly from parent script)
+    if [[ -z "${SCRIPT_DIR:-}" ]]; then
+        SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    fi
     
     # Create log directory
     mkdir -p "$LOG_DIR"
